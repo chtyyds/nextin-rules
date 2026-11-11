@@ -81,6 +81,17 @@ proxy-groups:
   - 美国节点
   - 新加坡节点
   - 台湾节点
+- name: Steam
+  type: select
+  proxies:
+  - 节点选择
+  - DIRECT
+  - 手动节点
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
 - name: Apple服务
   type: select
   proxies:
@@ -4732,6 +4743,68 @@ rules:
   - DOMAIN,download.visualstudio.microsoft.com,微软服务
   - DOMAIN,rt.services.visualstudio.com,微软服务
   # 国内域名及国内 IP 直连，其余默认代理
+  # Steam 独立手动组，默认节点选择；包含商店、社区、下载及收录的相关域名
+  - DOMAIN,steamcommunity-a.akamaihd.net.edgesuite.net,Steam
+  - DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net,Steam
+  - DOMAIN,f3b7q2p3.ssl.hwcdn.net,Steam
+  - DOMAIN,steambroadcast.akamaized.net,Steam
+  - DOMAIN,steamcdn-a.akamaihd.net,Steam
+  - DOMAIN,steamcommunity-a.akamaihd.net,Steam
+  - DOMAIN,steammobile.akamaized.net,Steam
+  - DOMAIN,steampipe-kr.akamaized.net,Steam
+  - DOMAIN,steampipe-partner.akamaized.net,Steam
+  - DOMAIN,steampipe.akamaized.net,Steam
+  - DOMAIN,steamstore-a.akamaihd.net,Steam
+  - DOMAIN,steamusercontent-a.akamaihd.net,Steam
+  - DOMAIN,steamuserimages-a.akamaihd.net,Steam
+  - DOMAIN,steamvideo-a.akamaihd.net,Steam
+  - DOMAIN,steamcloudsweden.blob.core.windows.net,Steam
+  - DOMAIN,steamugcquincy.blob.core.windows.net,Steam
+  - DOMAIN-SUFFIX,steamstatic.com,Steam
+  - DOMAIN-SUFFIX,steamgames.com,Steam
+  - DOMAIN-SUFFIX,steam.tv,Steam
+  - DOMAIN-SUFFIX,steam-api.com,Steam
+  - DOMAIN-SUFFIX,steam-chat.com,Steam
+  - DOMAIN-SUFFIX,steamcommunity.com,Steam
+  - DOMAIN-SUFFIX,steamcontent.com,Steam
+  - DOMAIN-SUFFIX,steamconnecttest.com,Steam
+  - DOMAIN-SUFFIX,steamdeck.com,Steam
+  - DOMAIN-SUFFIX,valve.net,Steam
+  - DOMAIN-SUFFIX,steamos.cloud,Steam
+  - DOMAIN-SUFFIX,steampowered.com,Steam
+  - DOMAIN-SUFFIX,s.team,Steam
+  - DOMAIN-SUFFIX,playartifact.com,Steam
+  - DOMAIN-SUFFIX,underlords.com,Steam
+  - DOMAIN-SUFFIX,valvesoftware.com,Steam
+  - DOMAIN-SUFFIX,dota2.com,Steam
+  - DOMAIN-SUFFIX,steam.cdn.on.net,Steam
+  - DOMAIN-SUFFIX,steam.eca.qtlglb.com,Steam
+  - DOMAIN-SUFFIX,steam.naeu.qtlglb.com,Steam
+  - DOMAIN-SUFFIX,steam.ru.qtlglb.com,Steam
+  - DOMAIN-SUFFIX,steam.apac.qtlglb.com,Steam
+  - DOMAIN-SUFFIX,steam.cdn.webra.ru,Steam
+  - DOMAIN-SUFFIX,edge.steam-dns.top.comcast.net,Steam
+  - DOMAIN-SUFFIX,steam.cdn.orcon.net.nz,Steam
+  - DOMAIN-SUFFIX,steam.cdn.slingshot.co.nz,Steam
+  - DOMAIN-SUFFIX,steamserver.net,Steam
+  - DOMAIN-SUFFIX,steamusercontent.com,Steam
+  - DOMAIN-SUFFIX,csgo.com.cn,Steam
+  - DOMAIN-SUFFIX,csgo.wmsj.cn,Steam
+  - DOMAIN-SUFFIX,dota2.com.cn,Steam
+  - DOMAIN-SUFFIX,dota2.wmsj.cn,Steam
+  - DOMAIN-SUFFIX,wmsjsteam.com,Steam
+  - DOMAIN-SUFFIX,client-update.queniuqe.com,Steam
+  - DOMAIN-SUFFIX,dl.steam.clngaa.com,Steam
+  - DOMAIN-SUFFIX,st.dl.bscstorage.net,Steam
+  - DOMAIN-SUFFIX,st.dl.eccdnx.com,Steam
+  - DOMAIN-SUFFIX,st.dl.pinyuncloud.com,Steam
+  - DOMAIN-SUFFIX,steampowered.com.8686c.com,Steam
+  - DOMAIN-SUFFIX,steamstatic.com.8686c.com,Steam
+  - DOMAIN,alibaba.cdn.steampipe.steamcontent.com,Steam
+  - DOMAIN,lv.queniujq.cn,Steam
+  - DOMAIN,xz.pphimalayanrt.com,Steam
+  - DOMAIN-SUFFIX,steamchina.com,Steam
+  - DOMAIN-SUFFIX,gstore.val.manlaxy.com,Steam
   - RULE-SET,cn-domain,DIRECT
   - DOMAIN-SUFFIX,cn,DIRECT
   - RULE-SET,cn-ip,DIRECT

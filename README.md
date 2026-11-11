@@ -22,6 +22,7 @@ https://raw.githubusercontent.com/chtyyds/nextin-rules/main/nextin.yaml
 | Disney+、HBO、Prime Video、Spotify、Twitch | 其他流媒体，默认手动节点 |
 | Apple、iCloud、App Store、Apple TV+ | Apple服务，默认直连，可切代理 |
 | 微软、Microsoft 365、OneDrive、Windows、Xbox | 微软服务，默认直连，可切代理；Copilot 优先归 AI |
+| Steam 商店、社区、下载等已收录域名 | Steam 独立手动组，默认节点选择；可切换 DIRECT 或地区组 |
 | GitHub 常规服务、其余未匹配流量 | 节点选择，默认手动节点 |
 | 已收录广告及追踪域名 | 拦截，可在广告与追踪组临时改为直连排查误杀 |
 
@@ -54,3 +55,7 @@ https://raw.githubusercontent.com/chtyyds/nextin-rules/main/nextin.yaml
 - 国内域名和 IP 使用两个 MRS 规则集，配置为每天更新；首次使用需要有效节点并可访问 GitHub Raw。
 - 初始版本通过 Mihomo v1.19.34 配置解析及 46 个代表域名匹配检查；手动版另检查所有策略组均为 select、引用有效且分流规则及 DNS 未变；尚未实测用户的 Nextin 版本、节点、解锁或 DNS 泄漏。
 - 域名拦截不能清除全部广告、YouTube 视频内广告或所有隐私追踪。
+
+## Steam 策略组
+
+Steam 已收录域名优先进入 Steam 组，默认使用节点选择。可手动选择 DIRECT（直连）、手动节点或地区组。此组同时影响命中规则的商店、社区和下载流量；选择代理会消耗代理流量。第三方游戏服务器和未收录域名仍按通用规则处理。
