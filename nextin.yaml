@@ -1,21 +1,14 @@
-# Nextin 订阅覆写模板 | 2026-11-11
-# 使用：导入现有机场订阅 → 设置中的 YAML/分流规则覆写 → 导入本文件并关联订阅。
-# 上传 GitHub 后可用 Raw URL 作为模板来源；不是在首页单独导入的节点订阅。
-# 本模板没有节点、密码或订阅密钥；proxies 由 Nextin 注入。节点名称不得与下列策略组重名。
-# 规则模式生效；检查已有自定义规则，避免更高优先级规则覆盖本文件。
-# 每区按节点名识别并按延迟自动选择；600秒、80ms切换容差、lazy按需测速。
-# 区域无节点时 REJECT，避免意外直连；可改服务策略为其他地区或「手动节点」。
-# 延迟测试不等于带宽、AI可用性或流媒体解锁测试。AI默认美国，TikTok默认美国。
-# iOS 隧道及 DNS 劫持由 Nextin 管理，本文件不强行创建系统 TUN 设备。
-# 请在 App 中启用 DNS 接管/防泄漏（如有该选项），确认 IPv6 被接管或阻断；
-# ipv6:false 不能阻止隧道外的 IPv6。App 自带 DoH、其他 VPN/描述文件需另行验证。
-# 国内/节点解析为直连加密DNS，国外解析为代理加密DNS；这不是「所有DNS都出境」。
-# 仅本地域名使用 system；DNS 服务仍能看见它收到的查询。未配置公网明文DNS回退。
-# 第一次启用需下载两个 MRS 国内规则库，需要有效节点及可访问 GitHub Raw。
-# 网站分类为生成日快照；国内 MRS 库每天更新，其他规则更新需重新生成模板。
-# 域名拦截无法清除 YouTube 视频内广告、同域广告或全部追踪。
-# 来源：MetaCubeX/meta-rules-dat meta 分支 *.list 转换；cn.mrs / geoip/cn.mrs。
-# 核心兼容性用 Mihomo 检查；Nextin 具体版本的模板处理及设备行为仍须导入验证。
+# Nextin 手动选择版订阅覆写模板 | 2026-11-11
+# 所有策略组均为 select；无自动测速、自动切换或故障回退。
+# 导入后先到「手动节点」选择一个真实节点；也可进入各地区节点组分别手动选节点。
+# 节点选择、AI服务和流媒体默认使用「手动节点」；Apple/微软默认直连。
+# 香港/日本/美国/新加坡/台湾仅按名称筛选，不自动选择或测速。
+# 没有可用节点时请手动改选；REJECT 是拒绝连接，不是代理节点。
+# 作为 Nextin YAML 模板/分流覆写导入并关联已有订阅，proxies 由 App 注入。
+# DNS 接管及 iOS 隧道由 Nextin 管理；ipv6:false 不能阻止隧道外 IPv6。
+# 国内及节点域名用直连加密 DNS，国外域名用代理加密 DNS；本地域名使用 system。
+# 国内域名和IP规则库每日更新；其余域名规则是创建日快照。
+# 规则来源：MetaCubeX/meta-rules-dat；域名拦截无法阻止全部广告及追踪。
 
 x-nextin:
   version: 1
@@ -37,82 +30,78 @@ proxy-groups:
 - name: 节点选择
   type: select
   proxies:
-  - 五区自动
-  - 香港自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
   - 手动节点
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
 - name: AI服务
   type: select
   proxies:
-  - 美国自动
-  - 日本自动
-  - 新加坡自动
-  - 台湾自动
-  - 香港自动
   - 手动节点
+  - 美国节点
+  - 日本节点
+  - 新加坡节点
+  - 台湾节点
+  - 香港节点
 - name: YouTube
   type: select
   proxies:
-  - 香港自动
-  - 五区自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
   - 手动节点
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
 - name: Netflix
   type: select
   proxies:
-  - 香港自动
-  - 五区自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
   - 手动节点
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
 - name: TikTok
   type: select
   proxies:
-  - 美国自动
-  - 日本自动
-  - 新加坡自动
-  - 台湾自动
-  - 香港自动
   - 手动节点
+  - 美国节点
+  - 日本节点
+  - 新加坡节点
+  - 台湾节点
+  - 香港节点
 - name: 其他流媒体
   type: select
   proxies:
-  - 香港自动
-  - 五区自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
   - 手动节点
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
 - name: Apple服务
   type: select
   proxies:
   - DIRECT
   - 节点选择
-  - 香港自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
   - 手动节点
 - name: 微软服务
   type: select
   proxies:
   - DIRECT
   - 节点选择
-  - 香港自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 新加坡节点
+  - 台湾节点
   - 手动节点
 - name: 广告与追踪
   type: select
@@ -125,73 +114,41 @@ proxy-groups:
   exclude-filter: (?i)(剩余|到期|过期|套餐|流量|更新|官网|公告|重置|Traffic|Expire|Reset|Bandwidth)
   proxies:
   - REJECT
-- name: 五区自动
-  type: url-test
-  proxies:
-  - 香港自动
-  - 日本自动
-  - 美国自动
-  - 新加坡自动
-  - 台湾自动
-  url: https://www.gstatic.com/generate_204
-  interval: 600
-  tolerance: 80
-  lazy: true
-- name: 香港自动
-  type: url-test
+- name: 香港节点
+  type: select
   include-all-proxies: true
   filter: (?i)(香港|港仔|Hong.?Kong|\bHK\b|HK[-_ ]?[0-9]|🇭🇰)
   exclude-filter: (?i)(剩余|到期|过期|套餐|流量|更新|官网|公告|重置|Traffic|Expire|Reset|Bandwidth)
   proxies:
   - REJECT
-  url: https://www.gstatic.com/generate_204
-  interval: 600
-  tolerance: 80
-  lazy: true
-- name: 日本自动
-  type: url-test
+- name: 日本节点
+  type: select
   include-all-proxies: true
   filter: (?i)(日本|东京|大阪|Japan|Tokyo|Osaka|\bJP\b|JP[-_ ]?[0-9]|🇯🇵)
   exclude-filter: (?i)(剩余|到期|过期|套餐|流量|更新|官网|公告|重置|Traffic|Expire|Reset|Bandwidth)
   proxies:
   - REJECT
-  url: https://www.gstatic.com/generate_204
-  interval: 600
-  tolerance: 80
-  lazy: true
-- name: 美国自动
-  type: url-test
+- name: 美国节点
+  type: select
   include-all-proxies: true
   filter: (?i)(美国|美國|洛杉矶|硅谷|西雅图|纽约|United.?States|America|Los.?Angeles|Seattle|\bUSA?\b|US[-_ ]?[0-9]|🇺🇸)
   exclude-filter: (?i)(剩余|到期|过期|套餐|流量|更新|官网|公告|重置|Traffic|Expire|Reset|Bandwidth)
   proxies:
   - REJECT
-  url: https://www.gstatic.com/generate_204
-  interval: 600
-  tolerance: 80
-  lazy: true
-- name: 新加坡自动
-  type: url-test
+- name: 新加坡节点
+  type: select
   include-all-proxies: true
   filter: (?i)(新加坡|狮城|獅城|Singapore|\bSG\b|SG[-_ ]?[0-9]|🇸🇬)
   exclude-filter: (?i)(剩余|到期|过期|套餐|流量|更新|官网|公告|重置|Traffic|Expire|Reset|Bandwidth)
   proxies:
   - REJECT
-  url: https://www.gstatic.com/generate_204
-  interval: 600
-  tolerance: 80
-  lazy: true
-- name: 台湾自动
-  type: url-test
+- name: 台湾节点
+  type: select
   include-all-proxies: true
   filter: (?i)(台湾|台灣|台北|Taiwan|Taipei|\bTW\b|TW[-_ ]?[0-9]|🇹🇼)
   exclude-filter: (?i)(剩余|到期|过期|套餐|流量|更新|官网|公告|重置|Traffic|Expire|Reset|Bandwidth)
   proxies:
   - REJECT
-  url: https://www.gstatic.com/generate_204
-  interval: 600
-  tolerance: 80
-  lazy: true
 dns:
   enable: true
   ipv6: false

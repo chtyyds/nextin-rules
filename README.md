@@ -15,19 +15,21 @@ https://raw.githubusercontent.com/chtyyds/nextin-rules/main/nextin.yaml
 | 国内域名、国内 IP | 直连 |
 | Bilibili、拼多多、小黑盒 | 已补充相关域名直连，广告追踪规则优先 |
 | 国内 AI，如豆包、DeepSeek | 直连 |
-| 国外 AI，如 ChatGPT、Claude、Gemini、Copilot、Perplexity、Grok、Cursor | AI服务，默认美国自动 |
-| YouTube | 独立组，默认香港自动 |
-| Netflix | 独立组，默认香港自动 |
-| TikTok | 独立组，默认美国自动 |
-| Disney+、HBO、Prime Video、Spotify、Twitch | 其他流媒体，默认香港自动 |
+| 国外 AI，如 ChatGPT、Claude、Gemini、Copilot、Perplexity、Grok、Cursor | AI服务，默认手动节点 |
+| YouTube | 独立组，默认手动节点 |
+| Netflix | 独立组，默认手动节点 |
+| TikTok | 独立组，默认手动节点 |
+| Disney+、HBO、Prime Video、Spotify、Twitch | 其他流媒体，默认手动节点 |
 | Apple、iCloud、App Store、Apple TV+ | Apple服务，默认直连，可切代理 |
 | 微软、Microsoft 365、OneDrive、Windows、Xbox | 微软服务，默认直连，可切代理；Copilot 优先归 AI |
-| GitHub 常规服务、其余未匹配流量 | 节点选择，默认五区自动 |
+| GitHub 常规服务、其余未匹配流量 | 节点选择，默认手动节点 |
 | 已收录广告及追踪域名 | 拦截，可在广告与追踪组临时改为直连排查误杀 |
 
-香港、日本、美国、新加坡、台湾节点按名称筛选，各区按延迟自动选择；间隔 600 秒，切换容差 80 毫秒，按需测速。五区自动组在五个区域间选择。无匹配节点的地区会拒绝连接，请改选有节点的地区或手动节点。
+所有策略组均为手动选择（`select`），没有自动测速、自动切换或故障回退。香港、日本、美国、新加坡、台湾仅用于按名称筛选节点。
 
-延迟测试不代表带宽、AI 可用性或流媒体解锁。登录 AI 或观看流媒体时，可固定使用同一地区／节点。
+导入或刷新模板后，先进入「手动节点」选择一个真实节点；节点选择、AI 和各流媒体组默认使用此节点。也可在服务策略组选择某个地区，再进入对应地区组手动选择节点。Apple、微软仍默认直连。
+
+「REJECT」表示拒绝连接，初次导入请务必选择真实节点。节点不可用时需要手动更换。AI 和流媒体的可用性、地区解锁需实际验证。
 
 ## DNS 与网络
 
@@ -50,5 +52,5 @@ https://raw.githubusercontent.com/chtyyds/nextin-rules/main/nextin.yaml
 - 来源：[MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat)，`meta` 分支。
 - 服务分类、广告追踪及专门补充规则写在 YAML 中，为 2026-11-11 的快照。修改应以当前 `nextin.yaml` 为准。
 - 国内域名和 IP 使用两个 MRS 规则集，配置为每天更新；首次使用需要有效节点并可访问 GitHub Raw。
-- 初始版本通过 Mihomo v1.19.34 配置解析及 46 个代表域名匹配检查；尚未实测用户的 Nextin 版本、节点、解锁或 DNS 泄漏。
+- 初始版本通过 Mihomo v1.19.34 配置解析及 46 个代表域名匹配检查；手动版另检查所有策略组均为 select、引用有效且分流规则及 DNS 未变；尚未实测用户的 Nextin 版本、节点、解锁或 DNS 泄漏。
 - 域名拦截不能清除全部广告、YouTube 视频内广告或所有隐私追踪。
