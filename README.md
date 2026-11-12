@@ -51,7 +51,7 @@ https://raw.githubusercontent.com/chtyyds/nextin-rules/main/nextin.yaml
 ## 规则来源与验证
 
 - 来源：[MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat)，`meta` 分支。
-- 服务分类、广告追踪及专门补充规则写在 YAML 中，为 2026-11-11 的快照。修改应以当前 `nextin.yaml` 为准。
+- 服务分类及专门补充规则写在 YAML 中，为 2026-11-11 的快照。修改应以当前 `nextin.yaml` 为准。
 - 国内域名和 IP 使用两个 MRS 规则集，配置为每天更新；首次使用需要有效节点并可访问 GitHub Raw。
 - 初始版本通过 Mihomo v1.19.34 配置解析及 46 个代表域名匹配检查；手动版另检查所有策略组均为 select、引用有效且分流规则及 DNS 未变；尚未实测用户的 Nextin 版本、节点、解锁或 DNS 泄漏。
 - 域名拦截不能清除全部广告、YouTube 视频内广告或所有隐私追踪。
@@ -59,3 +59,9 @@ https://raw.githubusercontent.com/chtyyds/nextin-rules/main/nextin.yaml
 ## Steam 策略组
 
 Steam 已收录域名优先进入 Steam 组，默认使用节点选择。可手动选择 DIRECT（直连）、手动节点或地区组。此组同时影响命中规则的商店、社区和下载流量；选择代理会消耗代理流量。第三方游戏服务器和未收录域名仍按通用规则处理。
+
+## 广告与追踪订阅
+
+使用 [anti-AD](https://github.com/privacy-protection-tools/anti-AD) 官方 Mihomo MRS：https://anti-ad.net/mihomo.mrs 。已替换原内嵌广告名单，每 24 小时更新，通过「节点选择」下载；首次加载需要可用节点。命中后进入「广告与追踪」，默认 REJECT，可临时改为 DIRECT 排查误拦截。
+
+已检查订阅可下载及 YAML 语法、引用和拦截优先级；手机效果需实际验证。
