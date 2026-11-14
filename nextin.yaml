@@ -242,6 +242,10 @@ rules:
   - IP-CIDR6,::1/128,DIRECT,no-resolve
   - IP-CIDR6,fc00::/7,DIRECT,no-resolve
   - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+  # 极氪兼容放行：自有服务及极光推送；共享推送域名对所有 App 生效
+  - DOMAIN-SUFFIX,zeekrlife.com,DIRECT
+  - DOMAIN-SUFFIX,jpush.cn,DIRECT
+  - DOMAIN-SUFFIX,jpush.io,DIRECT
   # anti-AD 自动更新；误杀时可将「广告与追踪」临时改为 DIRECT
   - RULE-SET,anti-ad,广告与追踪
   # Bilibili：主站、API、图片、视频 CDN；沿用来源集合，包含 B站国际域名
